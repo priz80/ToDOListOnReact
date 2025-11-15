@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>ToDo</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="#">ToDo</a>
+        </div>
+    </header>
+
+    <div class="form-wrapper">
+        <form action="#">
+            <label>
+                <input type="text">
+                <button></button>
+            </label>
+        </form>
+    </div>
+    <div class="todo-container">
+        <ul class="todo-list failed">
+            <li class="todo-list-item__wrapper">
+                <span>Первая задача</span>
+                <div class="todo-list-item__buttons">
+                    <button class="btn-trash"></button>
+                    <button class="btn-check"></button>
+                </div>
+            </li>
+        </ul>
+        <ul class="todo-list completed">
+            <li class="todo-list-item__wrapper">
+                <span>Вторая задача</span>
+                <div class="todo-list-item__buttons">
+                    <button class="btn-trash"></button>
+                    <button class="btn-uncheck"></button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
