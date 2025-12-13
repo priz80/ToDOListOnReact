@@ -1,34 +1,46 @@
 import { ToDoListItem } from "./ToDoListItem/ToDoListItem"
-import './ToDoList.scss'
+import "./ToDoList.scss"
+import { ToDo } from "../../models/todo-item"
 
-interface ToDo {
-  id: number,
-  text: string,
-  isDone: boolean
-}
+export const ToDoList = (props: {
+  todos: ToDo[],
+  updateToDo: Function,
+  deleteToDo: Function
+}) => {
+  const checkedList = () => {
+    return props.todos
+      .filter((item) => !item.isDone)
+      .map((item, idx) => {
+        return (
+          <ToDoListItem
+            toDoItem={item}
+            key={idx}
+            updateToDo={props.updateToDo}
+            deleteToDo={props.deleteToDo}
+          />
+        );
+      });
+  };
 
-export const ToDoList = () => {
-  const todo1: ToDo = {
-    id: 0,
-    text: 'Первая задача',
-    isDone: false
-  }
-  
-    return  (
-        <div className="todo-container">
-          <ul className="todo-list failed">
-            <ToDoListItem />
-          </ul>
-          <ul className="todo-list completed">
-            {/* <li className="todo-list-item__wrapper">
-              <span>Вторая задача</span>
-              <div className="todo-list-item__buttons">
-                <button className="btn-trash"></button>
-                <button className="btn-uncheck"></button>
-              </div>
-            </li> */}
-            <ToDoListItem />
-          </ul>
-        </div>
-    )
-}
+  const uncheckedList = () => {
+    return props.todos
+      .filter((item) => item.isDone)
+      .map((item, idx) => {
+        return (
+          <ToDoListItem
+            toDoItem={item}
+            key={idx}
+            updateToDo={props.updateToDo}
+            deleteToDo={props.deleteToDo}
+          />
+        );
+      });
+  };
+
+  return (
+    <div className="todo-container">
+      <ul className="todo-list failed">{checkedList()}</ul>
+      <ul className="todo-list completed">{uncheckedList()}</ul>
+    </div>
+  );
+};
