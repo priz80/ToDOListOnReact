@@ -1,20 +1,31 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Form } from "../components/Form/Form"
 import { Header } from "../components/Header/Header"
 import { ToDoList } from "../components/ToDoList/ToDoList"
 import { ToDo } from "../models/todo-item"
 import { toast, ToastContainer } from "react-toastify"
 
+const STORAGE_KEY = "todos"
+
 export const ToDoListPage = () => {
-  const [todos, setTodos] = useState<ToDo[]>([])
+  const [todos, setTodos] = useState<ToDo[]>(() => {
+    // Чтение из localStorage при старте
+    const saved = localStorage.getItem(STORAGE_KEY)
+    return saved ? JSON.parse(saved) : []
+  })
+
+  // Сохранение в localStorage при изменении todos
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
+  }, [todos])
 
   const createNewToDo = (text: string) => {
     const newToDo: ToDo = {
-      id: Date.now(), // уникальный ID
+      id: Date.now(),
       text,
       isDone: false,
     }
-    setTodos(prev => [...prev, newToDo]) // используем функциональный подход
+    setTodos(prev => [...prev, newToDo])
     toast.success("Задача добавлена!")
   }
 
