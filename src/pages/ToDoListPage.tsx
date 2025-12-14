@@ -4,7 +4,7 @@ import { Header } from "../components/Header/Header"
 import { ToDoList } from "../components/ToDoList/ToDoList"
 import { ToDo } from "../models/todo-item"
 import { toast, ToastContainer } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
+/* import "react-toastify/dist/ReactToastify.css" */
 
 export const ToDoListPage = () => {
   const [todos, setTodos] = useState<ToDo[]>([])
