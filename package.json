@@ -1,8 +1,8 @@
 {
-  "homepage": "http://priz80.github.io/ToDoListOnReact"
-}
+  
+  "homepage": "http://priz80.github.io/ToDoListOnReact",
 
-{
+
   "name": "to-do-list",
   "version": "0.1.0",
   "private": true,
